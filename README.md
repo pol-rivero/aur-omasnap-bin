@@ -24,7 +24,7 @@ run simply retries on the next hour. This matters because upstream creates the
 release tag before its build workflow attaches the tarball; a run that lands in
 that window fails on the download and retries later.
 
-The `PKGBUILD` is generated, never committed — it is in `.gitignore`.
+The `PKGBUILD` is generated, never committed.
 
 ## Required repository secrets
 
@@ -33,12 +33,6 @@ The `PKGBUILD` is generated, never committed — it is in `.gitignore`.
 | `AUR_USERNAME` | AUR account username, used as the commit author |
 | `AUR_EMAIL` | Email registered with the AUR account |
 | `AUR_SSH_PRIVATE_KEY` | Private half of an SSH key registered in your AUR account |
-
-## First publish
-
-`current_version.txt` starts at `0.0.0`, which never matches a real upstream
-tag. Once the secrets are set, trigger the workflow manually and it will create
-the AUR package at the current latest release.
 
 ## Package notes
 
@@ -56,8 +50,6 @@ the AUR package at the current latest release.
 - `tesseract` / `tesseract-data-eng` are `optdepends`: they are only needed for
   OCR text extraction.
 - `options=('!strip' '!debug')` leaves the released binary byte-for-byte intact.
-- The upstream tarball unpacks as a `/usr` tree and does not include the project
-  `LICENSE`, so it is fetched separately from the matching tag.
 
 ## Testing a build locally
 
@@ -66,8 +58,3 @@ sed -e 's/\[\[VERSION\]\]/1.20.1/g' -e 's/\[\[TARBALL_SHA256\]\]/SKIP/g' \
   PKGBUILD-template > PKGBUILD
 makepkg -si
 ```
-
-## License
-
-The automation in this repository is MIT licensed (see `LICENSE`). omasnap
-itself is MIT licensed by its upstream authors.
