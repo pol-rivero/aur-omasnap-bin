@@ -3,7 +3,7 @@
 Automation for the [`omasnap-bin`](https://aur.archlinux.org/packages/omasnap-bin) AUR package.
 
 [omasnap](https://github.com/tobi/omasnap) is a native Wayland screenshot and
-annotation editor for Omarchy and Hyprland. Upstream publishes a prebuilt Arch
+annotation editor for Hyprland. Upstream publishes a prebuilt Arch
 Linux tarball with every tagged release, so this package installs that binary
 directly instead of rebuilding it — hence the `-bin` suffix.
 
